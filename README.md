@@ -1,47 +1,62 @@
-# Machine Learning Examples and Tools
+# Automated Hyperparameter Optimization Guide & Examples
 
-This repository contains various machine learning examples, tools, and implementations focusing on different aspects of ML development and optimization.
+A comprehensive guide and implementation repository for automated hyperparameter optimization research. This repository combines theoretical understanding with practical implementations.
 
-## Current Contents
+## Repository Contents
 
-### Hyperparameter Optimization Examples
-Located in `code/Corning_HPO_Examples/`, this section demonstrates different approaches to automated hyperparameter optimization using popular frameworks:
+### Documentation & Research
+Located in `/docs`, this technical manual provides:
+- Detailed explanations of hyperparameter optimization techniques
+- Comparative analysis of different frameworks
+- Best practices and implementation strategies
+- Common pitfalls and solutions
+- Advanced usage patterns and considerations
+- Analysis of search algorithms and their impact on HPO
 
+### Implementation Examples
+Located in `code/Corning_HPO_Examples/`, this section provides working implementations using popular frameworks:
 - Scikit-learn's RandomizedSearchCV and ParameterSampler
 - Optuna
 - Keras Tuner
 
-Each implementation shows how to optimize a neural network's hyperparameters using different methodologies. See the directory's [README](code/Corning_HPO_Examples/README.md) for detailed setup and usage instructions.
+Each implementation demonstrates practical application of concepts discussed in the manual. See the directory's [README](code/Corning_HPO_Examples/README.md) for setup and usage instructions.
 
 ## Repository Structure
 
 ```
 .
+├── docs/                      # Technical documentation and research
+│   └── Corning_HPO_Manual.pdf             # Comprehensive HPO guide
 └── code/
-    └── Corning_HPO_Examples/  # Hyperparameter optimization examples
-        ├── scikit-learn/      # Scikit-learn based approaches
-        ├── optuna_example.py  # Optuna implementation
-        └── keras_tuner_example.py  # Keras Tuner implementation
+    └── Corning_HPO_Examples/ # Implementation examples
+        ├── scikit-learn/     # Scikit-learn based approaches
+        ├── optuna_example.py # Optuna implementation
+        └── keras_tuner_example.py # Keras Tuner implementation
 ```
 
 ## Getting Started
 
-Each subdirectory contains its own README with specific setup and usage instructions. Generally, you'll want to:
+### Reading the Manual
+Start with the manual in `/docs` to understand:
+1. Core concepts of hyperparameter optimization
+2. Different approaches and their trade-offs
+3. Framework-specific considerations
+4. Implementation strategies
 
-1. Create a virtual environment for the specific example you want to run
-2. Install the required dependencies from the respective requirements.txt
-3. Follow the example-specific README for usage instructions
+### Running Examples
+Each implementation directory contains:
+1. Specific setup instructions
+2. Requirements.txt for dependencies
+3. Usage examples and explanations
 
 ## Requirements
 
-Different examples may have different requirements. Check the requirements.txt file in each directory for specific package versions needed.
+Different examples have different requirements. Check individual requirements.txt files for specific package versions needed.
 
 ## Contributing
 
-Feel free to contribute by:
-1. Opening issues for bugs or enhancement suggestions
-2. Creating pull requests for improvements
-3. Adding documentation or examples
+If you have any suggestions or improvements, please feel free to open an issue or submit a pull request.
+Additionally, you can contact me at ajfairbanks2005@gmail.com.
 
 ## License
 
