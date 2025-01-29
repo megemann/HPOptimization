@@ -13,6 +13,9 @@ Located in `/docs`, this technical manual provides:
 - Advanced usage patterns and considerations
 - Analysis of search algorithms and their impact on HPO
 
+1. **Corning_HPO_Manual**: This was developed during my time interning at Corning Incorporated through Magnit in Summer 2024 with assitance from my supervisor Arun Baskaran.
+2.  **Independent_Study_Proposal**: Document developed for an independent study - now planning to start in fall 2025
+
 ### Implementation Examples
 Located in `code/Corning_HPO_Examples/`, this section provides working implementations using popular frameworks:
 - Scikit-learn's RandomizedSearchCV and ParameterSampler
@@ -55,7 +58,7 @@ Different examples have different requirements. Check individual requirements.tx
 
 ## Contributing
 
-If you have any suggestions or improvements, please feel free to open an issue or submit a pull request.
+If you have any suggestions or improvements, please feel free to open an issue or submit a pull request. If there is enough demand, I may implement the advanced solutions later.
 Additionally, you can contact me at ajfairbanks2005@gmail.com.
 
 ## License
