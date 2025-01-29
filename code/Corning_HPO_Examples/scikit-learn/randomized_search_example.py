@@ -1,5 +1,5 @@
-from sklearn.model_selection import RandomizedSearchCV
-from scikeras.wrappers import KerasClassifier
+from sklearn.model_selection import RandomizedSearchCV  # type: ignore
+from scikeras.wrappers import KerasClassifier  # type: ignore
 
 def run_randomized_search(train_data, train_labels, test_data, test_labels):
     # Define parameter space
@@ -49,9 +49,9 @@ def run_randomized_search(train_data, train_labels, test_data, test_labels):
     return results, best_model
 
 
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Conv2D, Dropout, Flatten, Input
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.models import Sequential  # type: ignore
+from tensorflow.keras.layers import Dense, Conv2D, Dropout, Flatten, Input  # type: ignore
+from tensorflow.keras.optimizers import Adam  # type: ignore
 
 def get_model(Nodes=10, Activation='relu', Kernel=3, Layers=1, Add_Drop='False', Drop_Rate=0.3, Learning_Rate=0.01):
     """Create a Keras model with configurable hyperparameters.
@@ -77,7 +77,7 @@ def get_model(Nodes=10, Activation='relu', Kernel=3, Layers=1, Add_Drop='False',
     
     # Add configurable number of Dense layers
     for _ in range(0, Layers):
-        model.add(Dense(12, activation='relu'))
+        model.add(Dense(Nodes, activation=Activation))
     
     # Optional dropout layer
     if Add_Drop == 'True':

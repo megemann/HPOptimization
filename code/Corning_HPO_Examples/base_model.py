@@ -1,8 +1,6 @@
-import numpy as np
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import InputLayer, Conv2D, MaxPooling2D, Dropout, Flatten, Dense
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.models import Sequential  # type: ignore
+from tensorflow.keras.layers import InputLayer, Conv2D, MaxPooling2D, Dropout, Flatten, Dense  # type: ignore
+from tensorflow.keras.optimizers import Adam  # type: ignore
 from generate_dummy_data import generate_dummy_data
 
 def get_model():
@@ -48,7 +46,7 @@ if __name__ == "__main__":
         
         # Create early stopping callback
         print("Creating early stopping callback...")
-        from tensorflow.keras.callbacks import EarlyStopping
+        from tensorflow.keras.callbacks import EarlyStopping  # type: ignore
         callback = EarlyStopping(monitor='val_loss', patience=5)
         
         # Train the model

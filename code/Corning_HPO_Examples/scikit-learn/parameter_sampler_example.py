@@ -1,5 +1,4 @@
-from sklearn.model_selection import ParameterSampler
-import numpy as np
+from sklearn.model_selection import ParameterSampler  # type: ignore
 
 # Define parameter space
 param_distributions = {
@@ -44,8 +43,8 @@ def run_parameter_sampler(train_data, train_labels, test_data, test_labels):
     
     return trial_list 
 
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Conv2D, Dropout, Flatten, MaxPooling2D
+from tensorflow.keras.models import Sequential  # type: ignore
+from tensorflow.keras.layers import Dense, Conv2D, Dropout, Flatten, MaxPooling2D  # type: ignore
 
 def get_model(param):
     """Create and return a Keras model with configurable hyperparameters."""

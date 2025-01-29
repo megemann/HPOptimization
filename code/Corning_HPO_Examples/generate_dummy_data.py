@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np  # type: ignore
 
 def generate_dummy_data(num_samples=100):
     # Create random black images (256x256x1)

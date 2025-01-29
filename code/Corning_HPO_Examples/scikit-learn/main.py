@@ -1,7 +1,6 @@
-import numpy as np
 import sys
 import os
-from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.utils import to_categorical  # type: ignore
 
 # Add the parent directory to the Python path to allow imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
