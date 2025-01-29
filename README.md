@@ -1,5 +1,23 @@
-# HPOptimization
-All papers and code associated with experimentation of hyperparameter optimization frameworks.
+# August 2024 Automated Hyperparameter Optimization Guide
 
-## COMING SOON - DECEMBER
-My research paper and code are in the process of being cleared by the legal team at Corning Incorporated from my time there on assignment through Magnit. Immediately following the release of my document, I will attach it to this repository and update the readme accordingly. Additionally, I will provide a link to my code in the offical Corning Incorporated github once it is published there. Unfortunately, until then, I can elaborate very little on what the paper contains. 
+A comprehensive guide to automated hyperparameter optimization using popular frameworks including Scikit-learn, Optuna, and Keras Tuner. This guide was developed with Arun Baskaran at Corning Incorporated in the summer of 2024 during my internship there. 
+
+## Overview
+This repository contains:
+- Detailed manual on hyperparameter optimization techniques
+- Implementation examples for different frameworks
+- Comparative analysis of different tuning approaches
+- Best practices and common pitfalls
+
+## Key Topics Covered
+- Base model design without tuning
+- Scikit-learn optimization approaches
+- Optuna implementation
+- Keras Tuner usage
+- Advanced usage patterns
+- Error handling and logging
+
+## Repository Structure
+- `/docs`: Complete technical manual
+- `/code`: Implementation examples
+- `/images`: Diagrams and visualizations
