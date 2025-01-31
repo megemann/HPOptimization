@@ -13,25 +13,26 @@ Located in `/docs`, this technical manual provides:
 - Advanced usage patterns and considerations
 - Analysis of search algorithms and their impact on HPO
 
-1. **Corning_HPO_Manual**: This was developed during my time interning at Corning Incorporated through Magnit in Summer 2024 with assitance from my supervisor Arun Baskaran.
+1. **HP_Optimization_Manual**: This was developed during in Summer 2024, when researching HP Optimization frameworks
 2.  **Independent_Study_Proposal**: Document developed for an independent study - now planning to start in fall 2025
 
 ### Implementation Examples
-Located in `code/Corning_HPO_Examples/`, this section provides working implementations using popular frameworks:
+Located in `code/HPO_Manual_Examples/`, this section provides working implementations using popular frameworks:
 - Scikit-learn's RandomizedSearchCV and ParameterSampler
 - Optuna
 - Keras Tuner
 
-Each implementation demonstrates practical application of concepts discussed in the manual. See the directory's [README](code/Corning_HPO_Examples/README.md) for setup and usage instructions.
+Each implementation demonstrates practical application of concepts discussed in the manual. See the directory's [README](code/HPO_Manual_Examples/README.md) for setup and usage instructions.
 
 ## Repository Structure
 
 ```
 .
 ├── docs/                      # Technical documentation and research
-│   └── Corning_HPO_Manual.pdf             # Comprehensive HPO guide
+│   └── HP_Optimization_Manual.pdf             # Comprehensive HPO guide
 └── code/
-    └── Corning_HPO_Examples/ # Implementation examples
+    └── HPO_Manual_Examples/ # Implementation examples
+        ├── base_model.py # Base model for all examples
         ├── scikit-learn/     # Scikit-learn based approaches
         ├── optuna_example.py # Optuna implementation
         └── keras_tuner_example.py # Keras Tuner implementation
