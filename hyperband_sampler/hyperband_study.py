@@ -217,7 +217,7 @@ class HyperbandStudy:
                     show_progress_bar=show_progress_bar
                 )
             except optuna.exceptions.TrialPruned:
-                pass  # Handle our custom algorithm stopping
+                    pass  # Handle our custom algorithm stopping
 
         else:
             if n_jobs > 1 or n_jobs == -1:
@@ -267,16 +267,19 @@ class HyperbandStudy:
             
             if self.is_multi_objective:
                 current_pareto = _get_pareto_front(study.trials, self.directions)
-                print(f"Hyperband iteration {i+1}/{self.hyperband_iterations} completed")
-                print(f"Current iteration Pareto front size: {len(current_pareto)}")
+                if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                    print(f"Hyperband iteration {i+1}/{self.hyperband_iterations} completed")
+                    print(f"Current iteration Pareto front size: {len(current_pareto)}")
             else:
                 try:
                     current_value = study.best_value
-                    print(f"Hyperband iteration {i+1}/{self.hyperband_iterations} completed")
-                    print(f"Current iteration best: {current_value}")
+                    if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                        print(f"Hyperband iteration {i+1}/{self.hyperband_iterations} completed")
+                        print(f"Current iteration best: {current_value}")
                 except AttributeError:
                     # Fallback for multi-objective studies that somehow got here
-                    print(f"Hyperband iteration {i+1}/{self.hyperband_iterations} completed")
+                    if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                        print(f"Hyperband iteration {i+1}/{self.hyperband_iterations} completed")
         
         # Create final study with all trials
         if self.is_multi_objective:
@@ -291,13 +294,15 @@ class HyperbandStudy:
         
         if self.is_multi_objective:
             pareto_front = _get_pareto_front(self.study.trials, self.directions)
-            print(f"Final Pareto front size: {len(pareto_front)}")
+            if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                print(f"Final Pareto front size: {len(pareto_front)}")
         else:
             try:
-                print(f"Overall best value: {self.study.best_value}")
+                if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                    print(f"Overall best value: {self.study.best_value}")
             except AttributeError:
-                # Fallback for multi-objective studies that somehow got here
-                print("Overall optimization completed (multi-objective study)")
+                if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                    print("Overall optimization completed (multi-objective study)")
         
         return self.study
 
@@ -307,11 +312,13 @@ class HyperbandStudy:
         if n_jobs == -1:
             n_jobs = os.cpu_count()
         if n_jobs > os.cpu_count():
-            print(f"WARNING: n_jobs ({n_jobs}) > os.cpu_count() ({os.cpu_count()}). Limiting to {os.cpu_count()}.")
+            if (optuna.logging.get_verbosity() <= optuna.logging.WARNING):
+                print(f"WARNING: n_jobs ({n_jobs}) > os.cpu_count() ({os.cpu_count()}). Limiting to {os.cpu_count()}.")
             n_jobs = os.cpu_count()
-        
-        print(f"Running {self.hyperband_iterations} Hyperband iterations in parallel using {n_jobs} threads...")
-        print("Using threading (GPU-safe) instead of multiprocessing.")
+    
+        if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+            print(f"Running {self.hyperband_iterations} Hyperband iterations in parallel using {n_jobs} threads...")
+            print("Using threading (GPU-safe) instead of multiprocessing.")
         
         # Generate seeds for each iteration
         seeds = []
@@ -360,9 +367,11 @@ class HyperbandStudy:
             for i, future in enumerate(concurrent.futures.as_completed(futures)):
                 try:
                     future.result()  # This will raise any exception that occurred
-                    print(f"Thread for iteration {i+1} completed successfully")
+                    if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                        print(f"Thread for iteration {i+1} completed successfully")
                 except Exception as e:
-                    print(f"Thread for iteration {i+1} failed with error: {e}")
+                    if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                        print(f"Thread for iteration {i+1} failed with error: {e}")
         
         # Process results and combine all trials
         all_trials = []
@@ -375,17 +384,21 @@ class HyperbandStudy:
                 all_trials.extend(study.trials)
                 if self.is_multi_objective:
                     pareto_size = len(_get_pareto_front(study.trials, self.directions))
-                    print(f"Iteration {iteration_idx + 1} completed with Pareto front size: {pareto_size}")
+                    if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                        print(f"Iteration {iteration_idx + 1} completed with Pareto front size: {pareto_size}")
                 else:
                     # For single-objective, we can safely access best_value
                     try:
                         best_val = study.best_value
-                        print(f"Iteration {iteration_idx + 1} completed with best value: {best_val}")
+                        if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                            print(f"Iteration {iteration_idx + 1} completed with best value: {best_val}")
                     except AttributeError:
                         # Fallback if best_value is not available
-                        print(f"Iteration {iteration_idx + 1} completed")
+                        if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                            print(f"Iteration {iteration_idx + 1} completed")
             else:
-                print(f"Iteration {iteration_idx + 1} failed")
+                if (optuna.logging.get_verbosity() <= optuna.logging.WARNING):
+                    print(f"Iteration {iteration_idx + 1} failed")
         
         if not all_trials:
             raise RuntimeError("All Hyperband iterations failed!")
@@ -404,19 +417,22 @@ class HyperbandStudy:
         print(f"\nParallel optimization completed!")
         if self.is_multi_objective:
             pareto_front = _get_pareto_front(self.study.trials, self.directions)
-            print(f"Final Pareto front size: {len(pareto_front)}")
-            print("Pareto front solutions:")
-            for i, trial in enumerate(pareto_front[:5]):  # Show first 5
-                print(f"  Solution {i+1}: values={trial.values}, params={trial.params}")
+            if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                print(f"Final Pareto front size: {len(pareto_front)}")
+                print("Pareto front solutions:")
+                for i, trial in enumerate(pareto_front[:5]):  # Show first 5
+                    print(f"  Solution {i+1}: values={trial.values}, params={trial.params}")
             if len(pareto_front) > 5:
                 print(f"  ... and {len(pareto_front) - 5} more solutions")
         else:
             try:
-                print(f"Best value across all iterations: {self.study.best_value}")
-                print(f"Best parameters: {self.study.best_params}")
+                if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                    print(f"Best value across all iterations: {self.study.best_value}")
+                    print(f"Best parameters: {self.study.best_params}")
             except AttributeError:
-                # Fallback for multi-objective studies that somehow got here
-                print("Optimization completed (multi-objective study)")
+                    # Fallback for multi-objective studies that somehow got here
+                    if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                        print("Optimization completed (multi-objective study)")
         
         return self.study
     
@@ -474,4 +490,4 @@ class HyperbandStudy:
         """Set the iteration studies list."""
         self._iteration_studies = value
         
-        
+

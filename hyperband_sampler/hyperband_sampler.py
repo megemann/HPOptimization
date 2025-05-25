@@ -117,6 +117,12 @@ class HyperbandSampler(BaseSampler):
                     'resource': resource,
                     'n_configs': n_configs
                 })
+
+            bracket['rungs'].append({
+                    'rung_id': i+1,
+                    'resource': max_resource,
+                    'n_configs': 1
+            })
             
             brackets.append(bracket)
         
