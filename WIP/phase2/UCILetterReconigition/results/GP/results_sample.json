@@ -1,0 +1,72 @@
+[
+  {
+    "start_time": 1748136416.4696395
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 200,
+    "learning_rate": 0.001,
+    "batch_size": 160,
+    "accuracy": 0.941,
+    "trial_number": 3,
+    "trial_end": 1748136464.7809432
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 200,
+    "learning_rate": 0.01,
+    "batch_size": 160,
+    "accuracy": 0.95425,
+    "trial_number": 2,
+    "trial_end": 1748136466.2426999
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 74,
+    "n_units_l1": 242,
+    "learning_rate": 0.0001,
+    "batch_size": 224,
+    "accuracy": 0.79125,
+    "trial_number": 1,
+    "trial_end": 1748136467.4634147
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 158,
+    "n_units_l1": 116,
+    "learning_rate": 0.01,
+    "batch_size": 160,
+    "accuracy": 0.95925,
+    "trial_number": 4,
+    "trial_end": 1748136469.4592655
+  },
+  {
+    "n_layers": 3,
+    "n_units_l0": 116,
+    "n_units_l1": 32,
+    "n_units_l2": 158,
+    "learning_rate": 0.001,
+    "batch_size": 96,
+    "accuracy": 0.9435,
+    "trial_number": 0,
+    "trial_end": 1748136476.7875545
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 32,
+    "learning_rate": 0.01,
+    "batch_size": 32,
+    "accuracy": 0.901,
+    "trial_number": 5,
+    "trial_end": 1748136482.4268448
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 158,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "accuracy": 0.952,
+    "trial_number": 6,
+    "trial_end": 1748136489.3705652
+  }
+]

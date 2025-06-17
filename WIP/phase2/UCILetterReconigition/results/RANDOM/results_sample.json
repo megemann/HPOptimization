@@ -1,0 +1,106 @@
+[
+  {
+    "start_time": 1748136600.993151
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 32,
+    "learning_rate": 0.0001,
+    "batch_size": 160,
+    "accuracy": 0.62425,
+    "trial_number": 2,
+    "trial_end": 1748136644.1110632
+  },
+  {
+    "n_layers": 3,
+    "n_units_l0": 242,
+    "n_units_l1": 32,
+    "n_units_l2": 74,
+    "learning_rate": 0.01,
+    "batch_size": 96,
+    "accuracy": 0.9225,
+    "trial_number": 4,
+    "trial_end": 1748136670.8704827
+  },
+  {
+    "n_layers": 3,
+    "n_units_l0": 158,
+    "n_units_l1": 74,
+    "n_units_l2": 200,
+    "learning_rate": 0.0001,
+    "batch_size": 96,
+    "accuracy": 0.866,
+    "trial_number": 3,
+    "trial_end": 1748136672.6928031
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 242,
+    "learning_rate": 0.0001,
+    "batch_size": 32,
+    "accuracy": 0.87425,
+    "trial_number": 0,
+    "trial_end": 1748136692.0297763
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 158,
+    "n_units_l1": 242,
+    "learning_rate": 0.0001,
+    "batch_size": 96,
+    "accuracy": 0.88175,
+    "trial_number": 6,
+    "trial_end": 1748136706.7165523
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 116,
+    "learning_rate": 0.0001,
+    "batch_size": 224,
+    "accuracy": 0.7245,
+    "trial_number": 8,
+    "trial_end": 1748136713.080671
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 74,
+    "n_units_l1": 158,
+    "learning_rate": 0.01,
+    "batch_size": 96,
+    "accuracy": 0.94325,
+    "trial_number": 7,
+    "trial_end": 1748136721.9129176
+  },
+  {
+    "n_layers": 3,
+    "n_units_l0": 116,
+    "n_units_l1": 158,
+    "n_units_l2": 116,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "accuracy": 0.95325,
+    "trial_number": 1,
+    "trial_end": 1748136728.1320105
+  },
+  {
+    "n_layers": 3,
+    "n_units_l0": 74,
+    "n_units_l1": 242,
+    "n_units_l2": 116,
+    "learning_rate": 0.01,
+    "batch_size": 32,
+    "accuracy": 0.91525,
+    "trial_number": 5,
+    "trial_end": 1748136728.7411177
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 200,
+    "n_units_l1": 32,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "accuracy": 0.94775,
+    "trial_number": 9,
+    "trial_end": 1748136736.6780584
+  }
+]

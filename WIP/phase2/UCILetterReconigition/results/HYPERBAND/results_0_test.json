@@ -1,0 +1,50 @@
+[
+  {
+    "n_layers": 2,
+    "n_units_l0": 242,
+    "n_units_l1": 200,
+    "learning_rate": 0.0001,
+    "batch_size": 224,
+    "resource": 3,
+    "accuracy": 0.537,
+    "trial_number": 0,
+    "trial_end": 1748212527.9237218,
+    "loss": 2.118428924560547
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 242,
+    "n_units_l1": 200,
+    "learning_rate": 0.01,
+    "batch_size": 160,
+    "resource": 3,
+    "accuracy": 0.9195,
+    "trial_number": 0,
+    "trial_end": 1748212528.400806,
+    "loss": 0.24758696556091309
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 242,
+    "n_units_l1": 200,
+    "learning_rate": 0.0001,
+    "batch_size": 224,
+    "resource": 6,
+    "accuracy": 0.66675,
+    "trial_number": 1,
+    "trial_end": 1748212530.187619,
+    "loss": 1.375699951171875
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 242,
+    "n_units_l1": 200,
+    "learning_rate": 0.01,
+    "batch_size": 160,
+    "resource": 6,
+    "accuracy": 0.93675,
+    "trial_number": 1,
+    "trial_end": 1748212530.8197293,
+    "loss": 0.2042586555480957
+  }
+]

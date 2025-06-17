@@ -4,6 +4,7 @@ import os
 import concurrent.futures
 import threading
 import numpy as np
+import time
 
 '''
     This file is the main file for the HyperbandStudy class.
@@ -239,8 +240,17 @@ class HyperbandStudy:
                         callbacks=None, gc_after_trial=False, show_progress_bar=False):
         """Run multiple Hyperband iterations serially."""
         all_trials = []
+        start_time = time.time()
         
         for i in range(self.hyperband_iterations):
+            # Check if timeout has been exceeded before starting new iteration
+            if timeout is not None:
+                elapsed_time = time.time() - start_time
+                if elapsed_time >= timeout:
+                    if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                        print(f"Timeout reached ({timeout}s). Stopping after {i} iterations.")
+                    break
+            
             # Use different seed for each iteration
             iteration_seed = (self.sampler_seed + i) if self.sampler_seed is not None else None
             
@@ -320,6 +330,8 @@ class HyperbandStudy:
             print(f"Running {self.hyperband_iterations} Hyperband iterations in parallel using {n_jobs} threads...")
             print("Using threading (GPU-safe) instead of multiprocessing.")
         
+        start_time = time.time()
+        
         # Generate seeds for each iteration
         seeds = []
         for i in range(self.hyperband_iterations):
@@ -357,21 +369,44 @@ class HyperbandStudy:
         
         # Run iterations in parallel using ThreadPoolExecutor
         with concurrent.futures.ThreadPoolExecutor(max_workers=n_jobs) as executor:
-            # Submit all tasks
+            # Submit tasks with timeout checking
             futures = []
             for i in range(self.hyperband_iterations):
+                # Check if timeout has been exceeded before submitting new tasks
+                if timeout is not None:
+                    elapsed_time = time.time() - start_time
+                    if elapsed_time >= timeout:
+                        if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                            print(f"Timeout reached ({timeout}s). Submitting only {i} out of {self.hyperband_iterations} iterations.")
+                        break
+                
                 future = executor.submit(run_iteration_with_result_storage, i)
                 futures.append(future)
             
+            # Calculate remaining timeout for waiting
+            remaining_timeout = None
+            if timeout is not None:
+                elapsed_time = time.time() - start_time
+                remaining_timeout = max(0, timeout - elapsed_time)
+            
             # Wait for completion and handle any exceptions
-            for i, future in enumerate(concurrent.futures.as_completed(futures)):
-                try:
-                    future.result()  # This will raise any exception that occurred
-                    if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
-                        print(f"Thread for iteration {i+1} completed successfully")
-                except Exception as e:
-                    if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
-                        print(f"Thread for iteration {i+1} failed with error: {e}")
+            completed_count = 0
+            try:
+                for future in concurrent.futures.as_completed(futures, timeout=remaining_timeout):
+                    try:
+                        future.result()  # This will raise any exception that occurred
+                        completed_count += 1
+                        if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                            print(f"Thread {completed_count} completed successfully")
+                    except Exception as e:
+                        if (optuna.logging.get_verbosity() <= optuna.logging.DEBUG):
+                            print(f"Thread failed with error: {e}")
+            except concurrent.futures.TimeoutError:
+                if (optuna.logging.get_verbosity() <= optuna.logging.INFO):
+                    print(f"Timeout reached ({timeout}s). Completed {completed_count} out of {len(futures)} submitted iterations.")
+                # Cancel any remaining futures
+                for future in futures:
+                    future.cancel()
         
         # Process results and combine all trials
         all_trials = []

@@ -1,0 +1,106 @@
+[
+  {
+    "start_time": 1748136236.7785227
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 116,
+    "learning_rate": 0.001,
+    "batch_size": 224,
+    "accuracy": 0.91,
+    "trial_number": 1,
+    "trial_end": 1748136282.4713144
+  },
+  {
+    "n_layers": 1,
+    "n_units_l0": 116,
+    "learning_rate": 0.01,
+    "batch_size": 160,
+    "accuracy": 0.95125,
+    "trial_number": 2,
+    "trial_end": 1748136286.6725526
+  },
+  {
+    "n_layers": 3,
+    "n_units_l0": 74,
+    "n_units_l1": 158,
+    "n_units_l2": 74,
+    "learning_rate": 0.01,
+    "batch_size": 224,
+    "accuracy": 0.953,
+    "trial_number": 0,
+    "trial_end": 1748136291.7989535
+  },
+  {
+    "n_layers": 3,
+    "n_units_l0": 116,
+    "n_units_l1": 116,
+    "n_units_l2": 158,
+    "learning_rate": 0.0001,
+    "batch_size": 160,
+    "accuracy": 0.83375,
+    "trial_number": 4,
+    "trial_end": 1748136299.489305
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 158,
+    "n_units_l1": 74,
+    "learning_rate": 0.0001,
+    "batch_size": 160,
+    "accuracy": 0.80575,
+    "trial_number": 6,
+    "trial_end": 1748136334.2750287
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 158,
+    "n_units_l1": 158,
+    "learning_rate": 0.001,
+    "batch_size": 160,
+    "accuracy": 0.957,
+    "trial_number": 7,
+    "trial_end": 1748136338.7653182
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 200,
+    "n_units_l1": 200,
+    "learning_rate": 0.001,
+    "batch_size": 160,
+    "accuracy": 0.9605,
+    "trial_number": 8,
+    "trial_end": 1748136341.5443063
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 74,
+    "n_units_l1": 242,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "accuracy": 0.95775,
+    "trial_number": 3,
+    "trial_end": 1748136346.9312534
+  },
+  {
+    "n_layers": 2,
+    "n_units_l0": 74,
+    "n_units_l1": 200,
+    "learning_rate": 0.01,
+    "batch_size": 32,
+    "accuracy": 0.94125,
+    "trial_number": 5,
+    "trial_end": 1748136347.0372717
+  },
+  {
+    "n_layers": 3,
+    "n_units_l0": 116,
+    "n_units_l1": 74,
+    "n_units_l2": 242,
+    "learning_rate": 0.01,
+    "batch_size": 96,
+    "accuracy": 0.94475,
+    "trial_number": 9,
+    "trial_end": 1748136348.6430542
+  }
+]
