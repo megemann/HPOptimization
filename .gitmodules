@@ -1,0 +1,3 @@
+[submodule "hyperband_sampler"]
+	path = hyperband_sampler
+	url = https://github.com/megemann/Hyperband_sampler.git
