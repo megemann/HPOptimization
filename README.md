@@ -1,6 +1,6 @@
 # Automated Hyperparameter Optimization Guide & Examples
 
-A comprehensive guide and implementation repository for automated hyperparameter optimization research. This repository combines theoretical understanding with practical implementations.
+A comprehensive guide and implementation repository for automated hyperparameter optimization research. This repository combines theoretical understanding with practical implementations, including a custom Hyperband sampler for Optuna.
 
 ## Repository Contents
 
@@ -24,18 +24,98 @@ Located in `code/HPO_Manual_Examples/`, this section provides working implementa
 
 Each implementation demonstrates practical application of concepts discussed in the manual. See the directory's [README](code/HPO_Manual_Examples/README.md) for setup and usage instructions.
 
+### Hyperband Sampler Package
+Located in `hyperband_sampler/` (as a git submodule), this package provides:
+- Custom Hyperband sampler implementation for Optuna
+- Multi-objective optimization support
+- Parallel execution capabilities
+- Enhanced timeout handling
+
+## Installation
+
+### Installing the Hyperband Sampler Package
+
+You can install this repository and the hyperband sampler package in several ways:
+
+#### Option 1: Install from source (recommended for development)
+```bash
+# Clone the repository with submodules
+git clone --recursive https://github.com/megemann/HPOptimization.git
+cd HPOptimization
+
+# Install in development mode
+pip install -e .
+```
+
+#### Option 2: Install just the hyperband sampler
+```bash
+# Clone and install only the hyperband sampler
+git clone https://github.com/megemann/Hyperband_sampler.git
+cd Hyperband_sampler
+pip install -e .
+```
+
+#### Option 3: Install with optional dependencies
+```bash
+# Install with PyTorch support
+pip install -e ".[torch]"
+
+# Install with machine learning utilities
+pip install -e ".[ml]"
+
+# Install with all optional dependencies
+pip install -e ".[all]"
+
+# Install with development tools
+pip install -e ".[dev]"
+```
+
+### Usage Example
+```python
+from hyperband_sampler import HyperbandSampler, HyperbandStudy
+import optuna
+
+# Create a study with the Hyperband sampler
+study = optuna.create_study(
+    sampler=HyperbandSampler(
+        min_resource=1,
+        max_resource=100,
+        reduction_factor=3
+    )
+)
+
+# Or use the HyperbandStudy wrapper for multiple iterations
+hyperband_study = HyperbandStudy(
+    min_resource=1,
+    max_resource=100,
+    reduction_factor=3,
+    hyperband_iterations=5
+)
+
+# Run optimization
+hyperband_study.optimize(objective_function, n_jobs=4)
+```
+
 ## Repository Structure
 
 ```
 .
 ├── docs/                      # Technical documentation and research
 │   └── HP_Optimization_Manual.pdf             # Comprehensive HPO guide
-└── code/
-    └── HPO_Manual_Examples/ # Implementation examples
-        ├── base_model.py # Base model for all examples
-        ├── scikit-learn/     # Scikit-learn based approaches
-        ├── optuna_example.py # Optuna implementation
-        └── keras_tuner_example.py # Keras Tuner implementation
+├── hyperband_sampler/         # Hyperband sampler package (git submodule)
+│   ├── __init__.py           # Package initialization
+│   ├── hyperband_sampler.py  # Main sampler implementation
+│   ├── hyperband_study.py    # Study wrapper with multi-iteration support
+│   └── requirements.txt      # Package dependencies
+├── code/
+│   └── HPO_Manual_Examples/  # Implementation examples
+│       ├── base_model.py     # Base model for all examples
+│       ├── scikit-learn/     # Scikit-learn based approaches
+│       ├── optuna_example.py # Optuna implementation
+│       └── keras_tuner_example.py # Keras Tuner implementation
+├── pyproject.toml            # Modern Python package configuration
+├── setup.py                  # Backward compatibility setup
+└── MANIFEST.in              # Package distribution files
 ```
 
 ## Getting Started
