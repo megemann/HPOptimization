@@ -1,0 +1,1 @@
+First thoughts: not a polarizing search space. really need something that 
